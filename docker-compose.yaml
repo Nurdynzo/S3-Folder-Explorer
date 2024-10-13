@@ -1,7 +1,7 @@
 services:
   web:
     container_name: dumps_web
-    build: ./frontend
+    build: ./web
     ports:
       - "8000:3000"
     environment:
@@ -10,7 +10,7 @@ services:
       - dump_network
   api:
     container_name: dumps_api
-    build: ./backend
+    build: ./api
     environment:
       - AWS_ACCESS_KEY_ID=
       - AWS_SECRET_ACCESS_KEY=
