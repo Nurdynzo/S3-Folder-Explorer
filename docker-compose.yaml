@@ -1,0 +1,30 @@
+services:
+  web:
+    container_name: dumps_web
+    build: ./frontend
+    ports:
+      - "8000:3000"
+    environment:
+      - REACT_APP_API_URL=
+    networks:
+      - dump_network
+  api:
+    container_name: dumps_api
+    build: ./backend
+    environment:
+      - AWS_ACCESS_KEY_ID=
+      - AWS_SECRET_ACCESS_KEY=
+      - AWS_REGION=
+      - AWS_BUCKET_NAME=
+      - PORT=3000
+      - ALLOWED_FOLDERS=
+    networks:
+      - dump_network
+  nginx:
+    image: nginx
+    networks:
+      - dump_network
+
+networks:
+  dump_network:
+    driver: bridge      
