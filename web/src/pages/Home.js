@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { FileIcon, Loader, Download, FolderIcon } from "lucide-react";
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000";
+const USERNAME = process.env.REACT_APP_USERNAME || "";
+const PASSWORD = process.env.REACT_APP_PASSWORD || "";
 
 const Home = () => {
   const [folders, setFolders] = useState([]);
@@ -86,10 +88,7 @@ const Home = () => {
 
   const handleLogin = () => {
     // Simulate a simple login (in a real-world scenario, you would authenticate with an API)
-    if (
-      username === "admin" &&
-      password === "hrZl6hUKFYSBZoak8j9DtJ56dxOmMzP"
-    ) {
+    if (username === `${USERNAME}` && password === `${PASSWORD}`) {
       setIsLoggedIn(true);
       setShowLoginModal(false);
     } else {
